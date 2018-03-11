@@ -1,4 +1,4 @@
-""" The Things Network node setup """
+""" LoRaWAN node setup """
 
 import utime
 import usocket
@@ -11,17 +11,17 @@ from network import LoRa
 
 
 def setup_abp():
-    print('Setup ttn with abp auth')
+    print('Setup network with abp auth')
 
     lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
 
     # create an ABP authentication params
     dev_addr = ustruct.unpack(">l", ubinascii.unhexlify(
-        settings.TTN_NODE_DEV_ADDR.replace(' ', '')))[0]
+        settings.NODE_DEV_ADDR.replace(' ', '')))[0]
     nwk_swkey = ubinascii.unhexlify(
-        settings.TTN_NODE_NWK_SWKEY.replace(' ', ''))
+        settings.NODE_NWK_SWKEY.replace(' ', ''))
     app_swkey = ubinascii.unhexlify(
-        settings.TTN_NODE_APP_SWKEY.replace(' ', ''))
+        settings.NODE_APP_SWKEY.replace(' ', ''))
 
     # remove all the non-default channels
     for i in range(3, 16):
@@ -49,13 +49,13 @@ def setup_abp():
 
 
 def setup_otaa():
-    print('Join ttn with ota auth')
+    print('Join network with ota auth')
 
     lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
 
     # create an OTA authentication params
-    app_eui = ubinascii.unhexlify(settings.TTN_NODE_APP_EUI.replace(' ', ''))
-    app_key = ubinascii.unhexlify(settings.TTN_NODE_APP_KEY.replace(' ', ''))
+    app_eui = ubinascii.unhexlify(settings.NODE_APP_EUI.replace(' ', ''))
+    app_key = ubinascii.unhexlify(settings.NODE_APP_KEY.replace(' ', ''))
 
     # remove all the non-default channels
     for i in range(3, 16):

@@ -34,7 +34,7 @@ for ruuvitag in rts.find_ruuvitags(timeout=10):
     hum_payload = pack_hum(ruuvitag.humidity)
     payload = payload + bytes([id_payload]) + temp_payload + hum_payload
 
-# setup ttn network and get the socket
+# setup LoRaWAN network and get the socket
 ttn = node.setup_abp()
 
 print('send payload')
