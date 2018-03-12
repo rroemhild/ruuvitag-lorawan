@@ -1,8 +1,8 @@
-import node
 import utime
 import machine
 import ustruct
 
+import node
 import settings
 
 from ruuvitag.scanner import RuuviTagScanner
