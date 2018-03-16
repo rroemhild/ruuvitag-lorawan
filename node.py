@@ -10,46 +10,8 @@ import settings
 from network import LoRa
 
 
-def setup_abp():
-    print('Setup network with abp auth')
-
-    lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
-
-    # create an ABP authentication params
-    dev_addr = ustruct.unpack(">l", ubinascii.unhexlify(
-        settings.NODE_DEV_ADDR.replace(' ', '')))[0]
-    nwk_swkey = ubinascii.unhexlify(
-        settings.NODE_NWK_SWKEY.replace(' ', ''))
-    app_swkey = ubinascii.unhexlify(
-        settings.NODE_APP_SWKEY.replace(' ', ''))
-
-    # remove all the non-default channels
-    for i in range(3, 16):
-        lora.remove_channel(i)
-
-    # set the 3 default channels to the same frequency
-    lora.add_channel(0, frequency=settings.LORA_FREQUENCY, dr_min=0, dr_max=5)
-    lora.add_channel(1, frequency=settings.LORA_FREQUENCY, dr_min=0, dr_max=5)
-    lora.add_channel(2, frequency=settings.LORA_FREQUENCY, dr_min=0, dr_max=5)
-
-    # join a network using ABP (Activation By Personalization)
-    lora.join(activation=LoRa.ABP, auth=(dev_addr, nwk_swkey, app_swkey))
-
-    # create a LoRa socket
-    s = usocket.socket(usocket.AF_LORA, usocket.SOCK_RAW)
-
-    # set the LoRaWAN data rate
-    s.setsockopt(usocket.SOL_LORA, usocket.SO_DR, settings.LORA_NODE_DR)
-
-    # make the socket blocking
-    s.setblocking(False)
-
-    # return LoRa socket
-    return s
-
-
 def setup_otaa():
-    print('Join network with ota auth')
+    print('Join network with otaa auth')
 
     lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
 
@@ -77,6 +39,44 @@ def setup_otaa():
         print('Not joined yet...')
 
     print('Network joined!')
+
+    # create a LoRa socket
+    s = usocket.socket(usocket.AF_LORA, usocket.SOCK_RAW)
+
+    # set the LoRaWAN data rate
+    s.setsockopt(usocket.SOL_LORA, usocket.SO_DR, settings.LORA_NODE_DR)
+
+    # make the socket blocking
+    s.setblocking(False)
+
+    # return LoRa socket
+    return s
+
+
+def setup_abp():
+    print('Setup network with abp auth')
+
+    lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.EU868)
+
+    # create an ABP authentication params
+    dev_addr = ustruct.unpack(">l", ubinascii.unhexlify(
+        settings.NODE_DEV_ADDR.replace(' ', '')))[0]
+    nwk_swkey = ubinascii.unhexlify(
+        settings.NODE_NWK_SWKEY.replace(' ', ''))
+    app_swkey = ubinascii.unhexlify(
+        settings.NODE_APP_SWKEY.replace(' ', ''))
+
+    # remove all the non-default channels
+    for i in range(3, 16):
+        lora.remove_channel(i)
+
+    # set the 3 default channels to the same frequency
+    lora.add_channel(0, frequency=settings.LORA_FREQUENCY, dr_min=0, dr_max=5)
+    lora.add_channel(1, frequency=settings.LORA_FREQUENCY, dr_min=0, dr_max=5)
+    lora.add_channel(2, frequency=settings.LORA_FREQUENCY, dr_min=0, dr_max=5)
+
+    # join a network using ABP (Activation By Personalization)
+    lora.join(activation=LoRa.ABP, auth=(dev_addr, nwk_swkey, app_swkey))
 
     # create a LoRa socket
     s = usocket.socket(usocket.AF_LORA, usocket.SOCK_RAW)

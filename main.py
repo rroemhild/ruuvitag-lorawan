@@ -28,14 +28,14 @@ rts = RuuviTagScanner(settings.RUUVITAGS)
 
 # get all data and prepare payload
 print('harvest ruuvitags')
-for ruuvitag in rts.find_ruuvitags(timeout=10):
+for ruuvitag in rts.find_ruuvitags(timeout=settings.TIMEOUT):
     id_payload = settings.RUUVITAGS.index(ruuvitag.mac.encode())
     temp_payload = pack_temp(ruuvitag.temperature)
     hum_payload = pack_hum(ruuvitag.humidity)
     payload = payload + bytes([id_payload]) + temp_payload + hum_payload
 
 # setup LoRaWAN network and get the socket
-ttn = node.setup_abp()
+ttn = node.setup_otaa()
 
 print('send payload')
 ttn.send(payload)
