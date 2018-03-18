@@ -52,15 +52,28 @@ Example payload format decoder for the The Things Network Console:
 
     function Decoder(bytes, port) {
       var ruuvitags = {};
+      var tagname = "";
+      var tags = bytes.length / 5;
 
-      if (bytes[0] === 0) {
+      for (i=0;i<tags;i+=1) {
         var temperature = (bytes[1] << 8) | bytes[2];
         var humidity = (bytes[3] << 8) | bytes[4];
-        ruuvitags.testtag = {
-          "humidity": parseFloat((humidity * 0.0025).toFixed(2)),
-          "temperature": parseFloat((temperature * 0.005).toFixed(2))
+
+        if (bytes[0] === 0) {
+          tagname = "livingroom";
+        }
+        else if (bytes[0] === 1) {
+          tagname = "bathroom";
+        }
+
+        ruuvitags[tagname] = {
+            "humidity": parseFloat((humidity * 0.0025).toFixed(2)),
+            "temperature": parseFloat((temperature * 0.005).toFixed(2))
         };
+
+        bytes.splice(0, 5);
       }
 
+      ruuvitags.num = tags;
       return ruuvitags;
     }
