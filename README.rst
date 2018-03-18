@@ -74,6 +74,5 @@ Example payload format decoder for the The Things Network Console:
         bytes.splice(0, 5);
       }
 
-      ruuvitags.num = tags;
       return ruuvitags;
     }
