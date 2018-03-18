@@ -41,3 +41,26 @@ In example for 2 RuuviTags the follwoing payload will be send:
 +----+------+------+----+------+------+
 
 You can read more about the data format used in this project in the `Ruuvi Sensor Data Format 5 Protocol Specification <https://github.com/ruuvi/ruuvi-sensor-protocols#data-format-5-protocol-specification>`_.
+
+
+Payload Format Decoder
+----------------------
+
+Example payload format decoder for the The Things Network Console:
+
+.. code-block:: javascript
+
+    function Decoder(bytes, port) {
+      var ruuvitags = {};
+
+      if (bytes[0] === 0) {
+        var temperature = (bytes[1] << 8) | bytes[2];
+        var humidity = (bytes[3] << 8) | bytes[4];
+        ruuvitags.testtag = {
+          "humidity": parseFloat((humidity * 0.0025).toFixed(2)),
+          "temperature": parseFloat((temperature * 0.005).toFixed(2))
+        };
+      }
+
+      return ruuvitags;
+    }
