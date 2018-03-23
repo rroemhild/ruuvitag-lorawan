@@ -20,8 +20,8 @@ import os
 # -- Project information -----------------------------------------------------
 
 project = 'RuuviTag on The Things Network Tutorial'
-copyright = '2018, Rafael Römhild'
-author = 'Rafael Römhild'
+copyright = u'2018, Rafael Römhild'
+author = u'Rafael Römhild'
 
 # The short X.Y version
 version = '1.0'
@@ -135,7 +135,7 @@ latex_elements = {
 latex_documents = [
     (master_doc, 'RuuviTagTheThingsNetworkTutorial.tex',
      'RuuviTag on The Things Network Tutorial Documentation',
-     'Rafael Römhild', 'manual'),
+     u'Rafael Römhild', 'manual'),
 ]
 
 
