@@ -1,10 +1,9 @@
-import utime
 import machine
 import ustruct
 
-import node
 import settings
 
+from node import LoRaWANNode
 from ruuvitag.scanner import RuuviTagScanner
 
 
@@ -34,12 +33,11 @@ for ruuvitag in rts.find_ruuvitags(timeout=settings.TIMEOUT):
     hum_payload = pack_hum(ruuvitag.humidity)
     payload = payload + bytes([id_payload]) + temp_payload + hum_payload
 
-# setup LoRaWAN network and get the socket
-ttn = node.setup_otaa()
+print('setup lorawan')
+node = LoRaWANNode(settings.NODE_APP_EUI, settings.NODE_APP_KEY)
 
 print('send payload')
-ttn.send(payload)
-utime.sleep(4)
+node.send(payload)
 
 print('enter deepsleep for {} ms'.format(settings.NODE_DEEPSLEEP))
 machine.deepsleep(settings.NODE_DEEPSLEEP)
