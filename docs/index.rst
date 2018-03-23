@@ -1,7 +1,7 @@
 Publish RuuviTag sensor data on The Things Network
 ==================================================
 
-In this tutorial we use a LoPy or FiPy to track temperature and humidity from a location with no WiFi and (in my case) no power supply socket and publish the RuuviTag sensor data on `The Things Network <https://www.thethingsnetwork.org/>`_ with the `MicroPython RuuviTag Scanner <https://github.com/rroemhild/micropython-ruuvitag>`_.
+In this tutorial we use a LoPy or FiPy to track temperature and humidity from a location with no WiFi and (in my case) no power supply socket and publish the `RuuviTag <https://tag.ruuvi.com/>`_ sensor data on `The Things Network <https://www.thethingsnetwork.org/>`_ with the `MicroPython RuuviTag Scanner <https://github.com/rroemhild/micropython-ruuvitag>`_.
 
 This tutorial uses settings specifically for connecting to The Things Network within the European 868 MHz region. For another usage, please see the settings.py and node.py files for relevant sections that need changing.
 
@@ -10,6 +10,8 @@ This tutorial uses settings specifically for connecting to The Things Network wi
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+This tutorial is made available under the `Creative Commons Attribution 4.0 International (CC BY 4.0) <https://creativecommons.org/licenses/by/4.0/>`_  license. Example code is made available under the MIT License.
 
 
 Hardware

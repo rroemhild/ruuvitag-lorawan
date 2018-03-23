@@ -7,6 +7,16 @@ This repository contains the up to date snippets for the `Publish RuuviTag senso
 This example code uses settings specifically for connecting to LoRaWAN networks within the European 868 MHz region. For another usage, please see the settings.py and node.py file for relevant sections that need changing.
 
 
+Copyright and License
+---------------------
+
+Copyright 2018 by Rafael Römhild
+
+The tutorial and text in this repository is made available under the `Creative Commons Attribution 4.0 International (CC BY 4.0) <https://creativecommons.org/licenses/by/4.0/>`_  license. See the file LICENSE-DOCS.txt for details.
+
+Example code and any other software in this repository is made available under the MIT License. See the file LICENSE-CODE.txt for details.
+
+
 Requirements
 ------------
 
