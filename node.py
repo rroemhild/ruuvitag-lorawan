@@ -70,6 +70,7 @@ class LoRaWANNode:
     def reset(self):
         self.socket.close()
         self.lora.nvram_erase()
+        self.join()
 
     def send(self, data):
         '''Send out data as bytes'''

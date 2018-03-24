@@ -191,7 +191,7 @@ We are setup and can start scanning for the tags and pack the data together. You
 The tag id is his index from the whitelist tuple we set in `settings.RUUVITAGS`. When you unpack the payload on the target platform you have to remember the tag position from the tuple.
 
 .. literalinclude:: ../main.py
-    :lines: 29-34
+    :lines: 30-34
 
 When all tags where processed and our payload is ready, we setup up LoRaWAN and send out the payload.
 
