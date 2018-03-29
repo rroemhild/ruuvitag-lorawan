@@ -17,9 +17,14 @@ This tutorial is made available under the `Creative Commons Attribution 4.0 Inte
 Hardware
 --------
 
+.. image:: ruuvitag-lorawan.jpg
+    :scale: 20%
+    :align: right
+
 * 1 x LoPy or FiPy from `pycom <https://pycom.io>`_
 * 1 x LoRa Antena
 * 1 x Expansion Board
+* 1 x Case
 * 1 x Lithium Ion Polymer Battery or battery pack
 * 1 or more `RuuviTags <https://tag.ruuvi.com/>`_
 
@@ -52,28 +57,22 @@ After your are familiar with your device and updated to the latest firmware, it'
 
 In example with mpfshell on Linux with the device connected to ``ttyUSB0``:
 
-1. Clone the repository
+1. Clone the repository::
 
-    ::
+    git clone https://github.com/rroemhild/micropython-ruuvitag.git
 
-        git clone https://github.com/rroemhild/micropython-ruuvitag.git
+2. Go to the module directory::
 
-2. Go to the module directory
+    cd micropython-ruuvitag
+    cd ruuvitag
 
-    ::
+3. Copy the files to your device ::
 
-        cd micropython-ruuvitag
-        cd ruuvitag
-
-3. Copy the files to your device
-
-    ::
-
-        mpfshell ttyUSB0
-        cd lib
-        md ruuvitag
-        cd ruuvitag
-        mput .
+    mpfshell ttyUSB0
+    cd lib
+    md ruuvitag
+    cd ruuvitag
+    mput .
 
 
 TTN Device Registration

@@ -26,7 +26,7 @@ author = u'Rafael Römhild'
 # The short X.Y version
 version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = '1.0.0-beta'
+release = '1.0.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -79,7 +79,7 @@ on_rtd = os.environ.get('READTHEDOCS') == 'True'
 if on_rtd:
     html_theme = 'default'
 else:
-    html_theme = 'nature'
+    html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
