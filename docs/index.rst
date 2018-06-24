@@ -235,8 +235,8 @@ On The Things Network Console we can now decode our payload with the following j
         }
 
         ruuvitags[tagname] = {
-            "stable": parseFloat((humidity * 0.0025).toFixed(2)),
-            "greenfield": parseFloat((temperature * 0.005).toFixed(2))
+            "humidity": parseFloat((humidity * 0.0025).toFixed(2)),
+            "temperature": parseFloat((temperature * 0.005).toFixed(2))
         };
 
         bytes.splice(0, 5);
